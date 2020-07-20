@@ -1,8 +1,11 @@
 const express = require('express');
-const path = require('path');
+
 const app = express();
-app.use(express.static(__dirname + '/dist/spa-fiap-lembretes'));
-app.get('/*', function(req,res) {
-  res.sendFile(path.join(__dirname+
-    '/dist/spa-fiap-lembretes/index.html'));});
+
+app.use(express.static('./dist/spa-fiap-lembretes'));
+
+app.get('/*', (req, res) =>
+    res.sendFile('index.html', {root: 'dist/spa-fiap-lembretes/'}),
+);
+
 app.listen(process.env.PORT || 8080);
