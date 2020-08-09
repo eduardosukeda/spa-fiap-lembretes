@@ -11,8 +11,8 @@ export class LembreteService {
 
   constructor(private http: HttpClient) { }
 
-  getListLembretes(): Observable<Lembrete[]> {
-    const url = `${environment.lembreteApiUrl}/lembretes`;
+  getListLembretes(email: string): Observable<Lembrete[]> {
+    const url = `${environment.lembreteApiUrl}/lembretes` + "?email=" + `${email}`;
     return this.http.get<Lembrete[]>(url);
   }
 
